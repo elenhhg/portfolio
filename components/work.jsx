@@ -19,10 +19,10 @@ export default function WorkSection() {
       image: "/images/calculator.png",
     },
     {
-      title: "Βaraki",
+      title: "Bar Website with Reservation",
       description: "Next.js / React / Responsive Design / Reservation Form",
       github: "https://baraki.vercel.app/",
-      image: "/images/baraki.png",
+      image: "/images/noir-bar.png",
     },
         {
       title: "eCommerce",
