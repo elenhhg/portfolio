@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Twitter, Github, Linkedin } from "lucide-react";
+import { Mail, Facebook, Github, Instagram } from "lucide-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -81,28 +81,35 @@ export default function ContactSection() {
               </div>
             </div>
             <div className="flex pt-2 space-x-3">
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="#"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Twitter className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="#"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Github className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="#"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Linkedin className="w-5 h-5" />
-              </motion.a>
-            </div>
+  <motion.a
+    whileHover={{ y: -3, color: "#00FFFF" }}
+    href="https://github.com/elenhhg"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 transition-colors hover:text-turquoise"
+  >
+    <Github className="w-5 h-5" />
+  </motion.a>
+  <motion.a
+    whileHover={{ y: -3, color: "#00FFFF" }}
+    href="https://www.instagram.com/elenhgewrgiou__/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 transition-colors hover:text-turquoise"
+  >
+    <Instagram className="w-5 h-5" />
+  </motion.a>
+  <motion.a
+    whileHover={{ y: -3, color: "#00FFFF" }}
+    href="https://web.facebook.com/profile.php?id=100006202728654"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 transition-colors hover:text-turquoise"
+  >
+    <Facebook className="w-5 h-5" />
+  </motion.a>
+</div>
+
           </motion.div>
 
           {/* Δεξιά πλευρά */}

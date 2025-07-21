@@ -20,9 +20,15 @@ export default function WorkSection() {
     },
     {
       title: "Βaraki",
-      description: "",
+      description: "Next.js / React / Responsive Design / Reservation Form",
       github: "https://baraki.vercel.app/",
       image: "/images/baraki.png",
+    },
+        {
+      title: "eCommerce",
+      description: "Next.js / React / eCommerce",
+      github: "https://e-shop-six-xi.vercel.app/",
+      image: "/images/e-shop.png",
     },
   ]
 

@@ -35,6 +35,21 @@ export default function Hero() {
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
   }
 
+  // smooth scroll με offset (π.χ. αν έχεις sticky header)
+  const scrollToWork = () => {
+    const target = document.getElementById("work")
+    if (target) {
+      const headerOffset = 80 // π.χ. ύψος sticky header
+      const elementPosition = target.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <section
       ref={ref}
@@ -89,6 +104,7 @@ export default function Hero() {
         <motion.button
           whileHover={{ scale: 1.1, backgroundColor: "#000000", color: "#fff" }}
           whileTap={{ scale: 0.95 }}
+          onClick={scrollToWork}
           className="bg-[#00FFFF] text-black font-['Rajdhani'] font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300"
         >
           View My Work
