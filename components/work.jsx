@@ -10,7 +10,7 @@ export default function WorkSection() {
     //   title: "To-Do List",
     //   description: "Task Manager / UI Design",
     //   github: "https://github.com/elenhhg/to-do-list",
-    //   image: "/images/todo-list.png",  // βάλε εικόνα εδώ ή άφησέ το κενό αν δεν έχει
+    //   image: "/images/todo-list.png",
     // },
     {
       title: "Calculator",
@@ -24,7 +24,7 @@ export default function WorkSection() {
       github: "https://baraki.vercel.app/",
       image: "/images/noir-bar.png",
     },
-        {
+    {
       title: "eCommerce",
       description: "Next.js / React / eCommerce",
       github: "https://e-shop-six-xi.vercel.app/",
@@ -33,7 +33,7 @@ export default function WorkSection() {
   ]
 
   return (
-    <section id="work" className="py-16 bg-black/80">
+    <section id="work" className="py-16 bg-black/60">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -5,7 +5,7 @@ import { Code, Server, Palette } from "lucide-react";
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-16 bg-black/80">
+    <section id="skills" className="py-16 bg-black/60">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function SkillsSection() {
               </ul>
             </motion.div>
 
-            {/* Backend Skills (Express removed) */}
+            {/* Backend Skills */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export default function SkillsSection() {
               </ul>
             </motion.div>
 
-            {/* Tools & CMS (Git & Photoshop removed) */}
+            {/* Tools & CMS */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

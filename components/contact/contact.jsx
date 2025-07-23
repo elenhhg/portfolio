@@ -41,7 +41,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-black">
+    <section id="contact" className="py-16 bg-black/60">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,35 +81,34 @@ export default function ContactSection() {
               </div>
             </div>
             <div className="flex pt-2 space-x-3">
-  <motion.a
-    whileHover={{ y: -3, color: "#00FFFF" }}
-    href="https://github.com/elenhhg"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 transition-colors hover:text-turquoise"
-  >
-    <Github className="w-5 h-5" />
-  </motion.a>
-  <motion.a
-    whileHover={{ y: -3, color: "#00FFFF" }}
-    href="https://www.instagram.com/elenhgewrgiou__/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 transition-colors hover:text-turquoise"
-  >
-    <Instagram className="w-5 h-5" />
-  </motion.a>
-  <motion.a
-    whileHover={{ y: -3, color: "#00FFFF" }}
-    href="https://web.facebook.com/profile.php?id=100006202728654"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 transition-colors hover:text-turquoise"
-  >
-    <Facebook className="w-5 h-5" />
-  </motion.a>
-</div>
-
+              <motion.a
+                whileHover={{ y: -3, color: "#00FFFF" }}
+                href="https://github.com/elenhhg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 transition-colors hover:text-turquoise"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -3, color: "#00FFFF" }}
+                href="https://www.instagram.com/elenhgewrgiou__/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 transition-colors hover:text-turquoise"
+              >
+                <Instagram className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -3, color: "#00FFFF" }}
+                href="https://web.facebook.com/profile.php?id=100006202728654"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 transition-colors hover:text-turquoise"
+              >
+                <Facebook className="w-5 h-5" />
+              </motion.a>
+            </div>
           </motion.div>
 
           {/* Δεξιά πλευρά */}
@@ -128,7 +127,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-gray-900 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
+                  className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
                 />
                 <input
                   type="email"
@@ -137,7 +136,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-gray-900 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
+                  className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
                 />
               </div>
               <input
@@ -147,7 +146,7 @@ export default function ContactSection() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full bg-gray-900 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
+                className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
               />
               <textarea
                 name="message"
@@ -156,7 +155,7 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full bg-gray-900 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors resize-none"
+                className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors resize-none"
               ></textarea>
               <motion.button
                 type="submit"
