@@ -30,6 +30,13 @@ export default function WorkSection() {
       github: "https://e-shop-six-xi.vercel.app/",
       image: "/images/e-shop.png",
     },
+
+     {
+      title: "Personal Finance Tracker",
+      description: "Personal finance manager with responsive design, dynamic charts, and user authentication.",
+      github: "https://personal-finance-tracker-32b1.vercel.app/",
+      image: "/images/finance-tracker.png",
+    },
   ]
 
   return (
