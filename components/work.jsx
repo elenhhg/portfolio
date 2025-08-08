@@ -35,7 +35,7 @@ export default function WorkSection() {
       title: "Personal Finance Tracker",
       description: "Personal finance manager with responsive design, dynamic charts, and user authentication.",
       github: "https://personal-finance-tracker-32b1.vercel.app/",
-      image: "/images/finance-tracker.png",
+      image: "/images/pft.png",
     },
   ]
 
@@ -74,7 +74,7 @@ export default function WorkSection() {
                     priority={true}
                   />
                 )}
-                <div className="absolute inset-0 transition-opacity duration-300 bg-gradient-to-br from-turquoise/20 to-purple-500/20 group-hover:opacity-80"></div>
+                <div className="absolute inset-0 transition-opacity duration-300 bg-gradient-to-br from-turquoise/20 group-hover:opacity-80"></div>
                 <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                   <div className="text-center">
                     <span className="font-['Syncopate'] text-base font-bold text-white">{project.title}</span>
