@@ -33,7 +33,7 @@ export default function WorkSection() {
 
      {
       title: "Personal Finance Tracker",
-      description: "Personal finance manager with responsive design, dynamic charts, and user authentication.",
+      description: "Personal finance manager with user authentication.",
       github: "https://personal-finance-tracker-32b1.vercel.app/",
       image: "/images/pft.png",
     },
