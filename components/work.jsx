@@ -13,12 +13,6 @@ export default function WorkSection() {
     //   image: "/images/todo-list.png",
     // },
     {
-      title: "Calculator",
-      description: "React Calculator / CSS Styling",
-      github: "https://calculator-ten-sigma-63.vercel.app/",
-      image: "/images/calculator.png",
-    },
-    {
       title: "Bar Website with Reservation",
       description: "Next.js / React / Responsive Design / Reservation Form",
       github: "https://baraki.vercel.app/",
@@ -33,7 +27,7 @@ export default function WorkSection() {
 
      {
       title: "Personal Finance Tracker",
-      description: "Personal finance manager with user authentication.",
+      description: "Next.js / React / Responsive Design / User Authentication",
       github: "https://personal-finance-tracker-32b1.vercel.app/",
       image: "/images/pft.png",
     },
