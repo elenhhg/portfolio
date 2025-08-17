@@ -21,8 +21,8 @@ export default function WorkSection() {
     {
       title: "eCommerce",
       description: "Next.js / React / eCommerce",
-      github: "https://e-shop-six-xi.vercel.app/",
-      image: "/images/e-shop.png",
+      github: "https://e-commerce-roan-seven-60.vercel.app/",
+      image: "/images/e-commerce.png",
     },
 
      {
