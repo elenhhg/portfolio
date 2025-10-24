@@ -39,18 +39,15 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full z-50">
       {/* Desktop Header */}
-      <div className="hidden md:flex justify-between items-center container mx-auto px-20 py-6">
+      <div className="hidden md:flex justify-between items-center container mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-6">
         {/* Logo */}
-        <div
-          className="flex flex-col text-left text-white cursor-pointer"
-          onClick={(e) => handleClick(e, "hero")}
-        >
-           <motion.div
+        <div className="flex flex-col text-left text-white cursor-pointer" onClick={(e) => handleClick(e, "hero")}>
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-             className="text-[#40E0D0] font-['Syncopate'] text-base font-bold mb-3 md:mb-0"
+            className="text-[#40E0D0] font-['Syncopate'] text-base font-bold mb-3 md:mb-0"
           >
             E.GEORGIOU
           </motion.div>
@@ -73,16 +70,13 @@ export default function Header() {
       </div>
 
       {/* Mobile Header */}
-      <div className="flex md:hidden justify-between items-center px-6 py-4">
+      <div className="flex md:hidden justify-between items-center px-4 sm:px-6 py-4">
         {/* Logo */}
-        <div
-          className="flex flex-col text-white cursor-pointer"
-          onClick={(e) => handleClick(e, "hero")}
-        >
-          <span className="text-[#40E0D0] font-bold text-lg tracking-widest">
+        <div className="flex flex-col text-white cursor-pointer" onClick={(e) => handleClick(e, "hero")}>
+          <span className="text-[#40E0D0] font-bold text-sm sm:text-base tracking-wider sm:tracking-widest">
             ELENI GEORGIOU
           </span>
-          <span className="text-gray-300 text-sm font-sans">Junior Developer</span>
+          <span className="text-gray-300 text-xs sm:text-sm font-sans">Junior Developer</span>
         </div>
 
         {/* Hamburger */}
@@ -97,7 +91,7 @@ export default function Header() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed inset-0 flex flex-col items-center justify-center space-y-4 text-white text-sm z-40"
+            className="fixed inset-0 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center space-y-6 text-white text-lg z-40"
           >
             {sections.map((section) => (
               <Link

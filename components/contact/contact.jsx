@@ -63,16 +63,14 @@ export default function ContactSection() {
               {/* Left side (Form) */}
               <div className="w-full lg:w-4/5 lg:-mt-20 xl:mt-10">
                 <div className="relative">
-                  <div className="absolute inset-0 rounded-2xl bg-turquoise/30 blur-3xl -z-10 shadow-[0_0_25px_8px_rgba(64,224,208,0.5)]"></div>
-
-                  <div className="p-10 border border-turquoise/50 rounded-2xl bg-black/40 backdrop-blur-md shadow-[0_0_35px_5px_rgba(64,224,208,0.4)]">
+                  <div className="p-10 rounded-2xl bg-black/40 backdrop-blur-md shadow-[0_0_35px_5px_rgba(64,224,208,0.4)]">
                     <form onSubmit={submitForm} className="space-y-8 md:space-y-16 rounded-2xl">
                       <div className="font-light tracking-tighter text-3xl md:text-6xl font-['Syncopate']">
                         Get <span className="text-white">in</span> touch
                       </div>
 
                       {/* Name */}
-                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                      <div className="flex flex-col space-y-2">
                         <label className="text-white text-lg md:text-2xl lg:text-xl font-['Rajdhani']">
                           What&apos;s your name ?
                         </label>
@@ -82,12 +80,12 @@ export default function ContactSection() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           required
-                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-gray-500 focus:border-turquoise focus:outline-none w-full font-['Rajdhani'] transition-colors duration-300"
                         />
                       </div>
 
                       {/* Email */}
-                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                      <div className="flex flex-col space-y-2">
                         <label className="text-white text-lg md:text-2xl lg:text-xl font-['Rajdhani']">
                           What&apos;s your email ?
                         </label>
@@ -97,12 +95,12 @@ export default function ContactSection() {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
-                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-gray-500 focus:border-turquoise focus:outline-none w-full font-['Rajdhani'] transition-colors duration-300"
                         />
                       </div>
 
                       {/* Message */}
-                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                      <div className="flex flex-col space-y-2">
                         <label className="text-white text-md md:text-2xl lg:text-xl font-['Rajdhani']">
                           Type in your message
                         </label>
@@ -111,7 +109,7 @@ export default function ContactSection() {
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           required
-                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-gray-500 focus:border-turquoise focus:outline-none w-full font-['Rajdhani'] transition-colors duration-300"
                         />
                       </div>
 
@@ -144,11 +142,14 @@ export default function ContactSection() {
               <div className="w-full lg:w-3/5 lg:mt-40 xl:mt-36 mt-20 md:mt-36 xl:w-full flex justify-end">
                 <div className="flex flex-col w-full md:space-y-8 space-y-10 items-end">
 
-                  {/* Email & Phone side by side */}
+                  {/* Email & Phone */}
                   <div className="flex flex-row space-x-10">
-                    <a href="mailto:e.elenhgewrgiou@gmail.com" className="hover:text-turquoise transition duration-300">
-                      <div className="flex flex-row space-x-4 items-center">
-                        <div className="text-turquoise rounded-full p-3 bg-turquoise/30">
+                    <a
+                      href="mailto:e.elenhgewrgiou@gmail.com"
+                      className="group"
+                    >
+                      <div className="flex flex-row space-x-4 items-center transform transition-all duration-300 group-hover:scale-110">
+                        <div className="text-white rounded-full p-3 bg-black group-hover:text-[#40E0D0] group-hover:shadow-[0_0_20px_#40E0D0] transition-all duration-300">
                           <Mail className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
                         <div className="text-right">
@@ -158,9 +159,12 @@ export default function ContactSection() {
                       </div>
                     </a>
 
-                    <a href="tel:+30-694-123-4567" className="hover:text-turquoise transition duration-300">
-                      <div className="flex flex-row space-x-4 items-center">
-                        <div className="text-turquoise rounded-full p-3 bg-turquoise/30">
+                    <a
+                      href="tel:+30-694-923-6792"
+                      className="group"
+                    >
+                      <div className="flex flex-row space-x-4 items-center transform transition-all duration-300 group-hover:scale-110">
+                        <div className="text-white rounded-full p-3 bg-black group-hover:text-[#40E0D0] group-hover:shadow-[0_0_20px_#40E0D0] transition-all duration-300">
                           <Phone className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
                         <div className="text-right">
@@ -174,15 +178,16 @@ export default function ContactSection() {
                   {/* Social Links + CV */}
                   <div className="flex flex-row space-x-6 md:space-x-12 mt-6 text-4xl lg:text-3xl">
                     <a
-                      className="text-white rounded-full p-2 md:p-4 hover:text-turquoise transition duration-300"
+                      className="group text-white rounded-full p-2 md:p-4 bg-black transition-all duration-300 transform hover:scale-110 hover:text-[#40E0D0] hover:shadow-[0_0_20px_#40E0D0]"
                       href="https://github.com/elenhhg"
                       target="_blank"
                       rel="noreferrer"
                     >
                       <Github className="w-6 h-6 md:w-8 md:h-8" />
                     </a>
+
                     <a
-                      className="text-white rounded-full p-2 md:p-4 hover:text-turquoise transition duration-300"
+                      className="group text-white rounded-full p-2 md:p-4 bg-black transition-all duration-300 transform hover:scale-110 hover:text-[#40E0D0] hover:shadow-[0_0_20px_#40E0D0]"
                       href="https://www.instagram.com/elenhgewrgiou__/"
                       target="_blank"
                       rel="noreferrer"
@@ -190,15 +195,13 @@ export default function ContactSection() {
                       <Instagram className="w-6 h-6 md:w-8 md:h-8" />
                     </a>
 
-                    {/* CV Modal Button */}
                     <button
                       onClick={() => setIsOpen(true)}
-                      className="text-turquoise rounded-full p-2 md:p-4 bg-turquoise/20 hover:bg-turquoise/40 transition duration-300"
+                      className="group text-white rounded-full p-2 md:p-4 bg-black transition-all duration-300 transform hover:scale-110 hover:text-[#40E0D0] hover:shadow-[0_0_20px_#40E0D0]"
                     >
                       <FileText className="w-6 h-6 md:w-8 md:h-8" />
                     </button>
 
-                    {/* Modal */}
                     {isOpen && (
                       <motion.div
                         className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
@@ -232,7 +235,6 @@ export default function ContactSection() {
                   </div>
                 </div>
               </div>
-
             </div>
           </>
         )}
