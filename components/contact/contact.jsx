@@ -1,179 +1,242 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Facebook, Github, Instagram } from "lucide-react";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Github, Mail, Phone, FileText, Instagram } from "lucide-react"
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
 
-  const [status, setStatus] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
-
+  const submitForm = async (e) => {
+    e.preventDefault()
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      setStatus("error");
+        body: JSON.stringify({ name, email, message }),
+        headers: { "content-type": "application/json" },
+      })
+      if (res.status === 200) setIsSubmitted(true)
+    } catch (error) {
+      console.log("Error occurred : " + error)
     }
-  };
+    setName("")
+    setEmail("")
+    setMessage("")
+  }
 
   return (
-    <section id="contact" className="py-16 bg-black/60">
-      <div className="container px-4 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-10 text-center"
-        >
-          <h2 className="font-['Syncopate'] text-2xl md:text-3xl font-bold mb-3">
-            GET IN TOUCH
-          </h2>
-          <div className="w-16 h-1 mx-auto bg-turquoise"></div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* Αριστερή πλευρά */}
+    <section id="contact" className="py-16 bg-black relative">
+      <div className="container mx-auto px-4">
+        {isSubmitted ? (
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center text-turquoise text-3xl md:text-5xl font-['Syncopate']"
           >
-            <h3 className="font-['Rajdhani'] text-xl font-bold text-turquoise">Let's Connect</h3>
-            <p className="font-['Rajdhani'] text-sm text-gray-300">
-              I'm always open to discussing new projects, creative ideas or
-              opportunities to be part of your vision.
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-turquoise" />
-                <span className="font-['Rajdhani'] text-sm">e.elenhgewrgiou@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="flex items-center justify-center w-4 h-4 text-turquoise">📍</div>
-                <span className="font-['Rajdhani'] text-sm">Kiato, Korinthias</span>
+            Thanks for reaching out, I&apos;ll contact you soon
+          </motion.div>
+        ) : (
+          <>
+            {/* Heading */}
+            <div className="relative z-10 flex w-10/12 m-auto text-white flex-col lg:flex-row">
+              <div className="w-full lg:w-3/5">
+                <div className="text-5xl md:text-9xl sm:text-6xl lg:text-8xl xl:text-9xl">
+                  <div className="font-extrabold leading-tight tracking-tighter font-['Syncopate']">
+                    Let<span className="text-turquoise">&apos;</span>s work
+                  </div>
+                  <div className="font-extrabold leading-tight tracking-tighter font-['Syncopate'] -mt-4 md:-mt-12 lg:-mt-12">
+                    <span className="text-5xl md:text-8xl">— </span>
+                    <span className="text-turquoise">together</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex pt-2 space-x-3">
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="https://github.com/elenhhg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Github className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="https://www.instagram.com/elenhgewrgiou__/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Instagram className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3, color: "#00FFFF" }}
-                href="https://web.facebook.com/profile.php?id=100006202728654"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 transition-colors hover:text-turquoise"
-              >
-                <Facebook className="w-5 h-5" />
-              </motion.a>
-            </div>
-          </motion.div>
 
-          {/* Δεξιά πλευρά */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
-                />
+            {/* Form + Right side */}
+            <div className="relative z-10 flex w-10/12 m-auto text-white flex-col lg:flex-row lg:space-x-12">
+
+              {/* Left side (Form) */}
+              <div className="w-full lg:w-4/5 lg:-mt-20 xl:mt-10">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-2xl bg-turquoise/30 blur-3xl -z-10 shadow-[0_0_25px_8px_rgba(64,224,208,0.5)]"></div>
+
+                  <div className="p-10 border border-turquoise/50 rounded-2xl bg-black/40 backdrop-blur-md shadow-[0_0_35px_5px_rgba(64,224,208,0.4)]">
+                    <form onSubmit={submitForm} className="space-y-8 md:space-y-16 rounded-2xl">
+                      <div className="font-light tracking-tighter text-3xl md:text-6xl font-['Syncopate']">
+                        Get <span className="text-white">in</span> touch
+                      </div>
+
+                      {/* Name */}
+                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                        <label className="text-white text-lg md:text-2xl lg:text-xl font-['Rajdhani']">
+                          What&apos;s your name ?
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter your name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                        />
+                      </div>
+
+                      {/* Email */}
+                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                        <label className="text-white text-lg md:text-2xl lg:text-xl font-['Rajdhani']">
+                          What&apos;s your email ?
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="Enter your email address"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                        />
+                      </div>
+
+                      {/* Message */}
+                      <div className="flex flex-col space-y-0 xl:space-y-2">
+                        <label className="text-white text-md md:text-2xl lg:text-xl font-['Rajdhani']">
+                          Type in your message
+                        </label>
+                        <textarea
+                          placeholder="Enter your message"
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          required
+                          className="p-2 text-white bg-transparent pl-0 focus:pl-2 border-b border-turquoise focus:outline-none w-full font-['Rajdhani']"
+                        />
+                      </div>
+
+                      {/* Buttons */}
+                      <div className="flex flex-row md:space-x-10 space-x-4">
+                        <button
+                          type="submit"
+                          className="font-bold text-white bg-turquoise hover:bg-turquoise/80 transform transition ease-in-out duration-300 hover:scale-105 p-2 md:text-md w-full lg:w-3/4 md:p-3 rounded-xl font-['Syncopate']"
+                        >
+                          Send
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEmail("")
+                            setName("")
+                            setMessage("")
+                          }}
+                          className="font-bold text-white bg-turquoise hover:bg-turquoise/80 transform transition ease-in-out duration-300 hover:scale-105 p-2 md:text-md w-full lg:w-3/4 md:p-3 rounded-xl font-['Syncopate']"
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors"
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="w-full bg-gray-900/60 border border-gray-800 focus:border-turquoise rounded-lg px-3 py-2 font-['Rajdhani'] text-sm outline-none transition-colors resize-none"
-              ></textarea>
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-turquoise text-red font-['Rajdhani'] font-bold py-2 px-6 rounded-lg text-sm"
-              >
-                Send Message
-              </motion.button>
 
-              {/* Εμφάνιση κατάστασης */}
-              {status === "sending" && <p className="text-gray-400">Sending...</p>}
-              {status === "success" && <p className="text-green-500">Message sent successfully!</p>}
-              {status === "error" && <p className="text-red-500">Something went wrong. Try again.</p>}
-            </form>
-          </motion.div>
-        </div>
+              {/* Right side - Contact Info & Social Icons */}
+              <div className="w-full lg:w-3/5 lg:mt-40 xl:mt-36 mt-20 md:mt-36 xl:w-full flex justify-end">
+                <div className="flex flex-col w-full md:space-y-8 space-y-10 items-end">
+
+                  {/* Email & Phone side by side */}
+                  <div className="flex flex-row space-x-10">
+                    <a href="mailto:e.elenhgewrgiou@gmail.com" className="hover:text-turquoise transition duration-300">
+                      <div className="flex flex-row space-x-4 items-center">
+                        <div className="text-turquoise rounded-full p-3 bg-turquoise/30">
+                          <Mail className="w-6 h-6 md:w-8 md:h-8" />
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm md:text-lg">e.elenhgewrgiou@gmail.com</p>
+                          <p className="text-xs md:text-sm text-white/50">Personal Email</p>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="tel:+30-694-123-4567" className="hover:text-turquoise transition duration-300">
+                      <div className="flex flex-row space-x-4 items-center">
+                        <div className="text-turquoise rounded-full p-3 bg-turquoise/30">
+                          <Phone className="w-6 h-6 md:w-8 md:h-8" />
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm md:text-lg">+30 694 923 6792</p>
+                          <p className="text-xs md:text-sm text-white/50">Call me</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  {/* Social Links + CV */}
+                  <div className="flex flex-row space-x-6 md:space-x-12 mt-6 text-4xl lg:text-3xl">
+                    <a
+                      className="text-white rounded-full p-2 md:p-4 hover:text-turquoise transition duration-300"
+                      href="https://github.com/elenhhg"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Github className="w-6 h-6 md:w-8 md:h-8" />
+                    </a>
+                    <a
+                      className="text-white rounded-full p-2 md:p-4 hover:text-turquoise transition duration-300"
+                      href="https://www.instagram.com/elenhgewrgiou__/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Instagram className="w-6 h-6 md:w-8 md:h-8" />
+                    </a>
+
+                    {/* CV Modal Button */}
+                    <button
+                      onClick={() => setIsOpen(true)}
+                      className="text-turquoise rounded-full p-2 md:p-4 bg-turquoise/20 hover:bg-turquoise/40 transition duration-300"
+                    >
+                      <FileText className="w-6 h-6 md:w-8 md:h-8" />
+                    </button>
+
+                    {/* Modal */}
+                    {isOpen && (
+                      <motion.div
+                        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+                        onClick={() => setIsOpen(false)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <motion.div
+                          className="relative p-4 bg-black rounded-lg max-w-full max-h-full flex items-center justify-center"
+                          onClick={(e) => e.stopPropagation()}
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.5, opacity: 0 }}
+                          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                        >
+                          <img
+                            src="/images/cv.png"
+                            alt="CV"
+                            className="max-w-full max-h-[80vh] object-contain"
+                          />
+                          <button
+                            className="absolute top-2 right-2 text-turquoise text-2xl font-bold"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            ×
+                          </button>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </>
+        )}
       </div>
     </section>
-  );
+  )
 }

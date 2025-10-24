@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export default function Footer() {
   return (
-    <footer className="py-6 bg-black border-t border-turquoise/20">
+    <footer className="py-6 bg-black border-turquoise/20">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <motion.div
@@ -14,7 +14,7 @@ export default function Footer() {
             viewport={{ once: true }}
              className="text-[#40E0D0] font-['Syncopate'] text-base font-bold mb-3 md:mb-0"
           >
-            PORTFOLIO
+            E.GEORGIOU
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}

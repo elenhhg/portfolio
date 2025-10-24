@@ -1,7 +1,12 @@
+
 import React from "react"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { pacifico, rajdhani, syncopate } from "./fonts"
+
+
+
+
 
 export const metadata = {
   title: "Portfolio",
@@ -15,15 +20,21 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${pacifico.variable} ${rajdhani.variable} ${syncopate.variable}`}
     >
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className="relative">
+        {/* Background πάντα πίσω */}
+       
+
+        {/* Το περιεχόμενο του portfolio πάνω από το background */}
+        <div className="relative z-10">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   )

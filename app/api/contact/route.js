@@ -1,15 +1,12 @@
 import nodemailer from "nodemailer";
 
-console.log("USER:", process.env.EMAIL_USER);
-console.log("PASS length:", process.env.EMAIL_PASS?.length);
-console.log("PASS value:", process.env.EMAIL_PASS);
- 
-
 export async function POST(req) {
   try {
-    const { name, email, subject, message } = await req.json();
+    // Παίρνουμε τα δεδομένα από το request
+    const { name, email, message } = await req.json();
 
-    if (!name || !email || !subject || !message) {
+    // Έλεγχος αν όλα τα πεδία υπάρχουν
+    if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ error: "Please fill in all fields." }),
         { status: 400 }
@@ -17,40 +14,23 @@ export async function POST(req) {
     }
 
     // Δημιουργία transporter για Gmail SMTP
-    // const transporter = nodemailer.createTransport({
-    //   host: "smtp.gmail.com",
-    //   port: 465,
-    //   secure: true,
-    //   auth: {
-    //     user: process.env.EMAIL_USER,
-    //     pass: process.env.EMAIL_PASS,
-    //   },
-    // });
-    
     const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "e.elehgewrgiou@gmail.com",
-//     pass: "ubxcbjzdcakfqzpm", 
-//   },
-// });
-
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
     // Ρυθμίσεις email
     const mailOptions = {
-      from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_USER,
-      subject: `[Portfolio Contact] ${subject}`,
-      text: `Message from ${name} <${email}>:\n\n${message}`,
+      from: `"${name}" <${email}>`, // Από τον χρήστη που στέλνει
+      to: process.env.EMAIL_USER,   // Το email σου για να λαμβάνεις τα μηνύματα
+      subject: `[Portfolio Contact] New message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     };
 
+    // Στέλνουμε email
     await transporter.sendMail(mailOptions);
 
     return new Response(

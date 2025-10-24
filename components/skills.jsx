@@ -1,135 +1,82 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { Code, Server, Palette } from "lucide-react";
+import { motion } from "framer-motion"
+import Image from "next/image"
+
+const skills = [
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Next.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  {
+    name: "Node.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "WordPress",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+  },
+  {
+    name: "Photoshop",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
+  },
+]
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-16 bg-black/60">
-      <div className="container px-4 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-10 text-center"
-        >
-          <h2 className="font-['Syncopate'] text-2xl md:text-3xl font-bold mb-3">MY SKILLS</h2>
-          <div className="w-16 h-1 mx-auto bg-turquoise"></div>
-        </motion.div>
+    <section id="skills" className="py-24 bg-black">
+      <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="mb-16 text-center"
+>
+  <h2 className="font-['Syncopate'] text-3xl font-bold mb-3">Skills</h2>
+  <div className="w-12 h-[2px] bg-[#40E0D0] mx-auto"></div>
+</motion.div>
 
-        <div className="mb-12">
-          <div className="grid max-w-4xl grid-cols-1 gap-6 mx-auto md:grid-cols-3">
-            {/* Frontend Skills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="p-6 border rounded-lg bg-gray-900/60 border-turquoise/20"
-            >
-              <div className="flex items-center mb-4">
-                <Code className="w-5 h-5 mr-2 text-turquoise" />
-                <h3 className="font-['Rajdhani'] text-lg font-bold text-white">Frontend</h3>
-              </div>
-              <ul className="space-y-3 font-['Rajdhani']">
-                {[
-                  { name: "React", level: 60 },
-                  { name: "Next.js", level: 75 },
-                  { name: "Tailwind CSS", level: 75 },
-                ].map((skill) => (
-                  <li key={skill.name} className="text-sm">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-turquoise">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 rounded-full h-1.5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-turquoise to-blue-500 h-1.5 rounded-full"
-                      ></motion.div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="group relative"
+              >
+                <div className="flex flex-col items-center gap-3">
+                  {/* Icon */}
+                  <div className="w-16 h-16 rounded-full border-2 border-gray-800 group-hover:border-turquoise flex items-center justify-center bg-gray-900/50 transition-all duration-300 p-3">
+                    <Image
+                      src={skill.icon || "/placeholder.svg"}
+                      alt={skill.name}
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
 
-            {/* Backend Skills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="p-6 border rounded-lg bg-gray-900/60 border-turquoise/20"
-            >
-              <div className="flex items-center mb-4">
-                <Server className="w-5 h-5 mr-2 text-turquoise" />
-                <h3 className="font-['Rajdhani'] text-lg font-bold text-white">Backend</h3>
-              </div>
-              <ul className="space-y-3 font-['Rajdhani']">
-                {[
-                  { name: "Node.js", level: 60 },
-                  { name: "MongoDB", level: 50 },
-                ].map((skill) => (
-                  <li key={skill.name} className="text-sm">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-turquoise">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 rounded-full h-1.5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-turquoise to-purple-500 h-1.5 rounded-full"
-                      ></motion.div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Tools & CMS */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="p-6 border rounded-lg bg-gray-900/60 border-turquoise/20"
-            >
-              <div className="flex items-center mb-4">
-                <Palette className="w-5 h-5 mr-2 text-turquoise" />
-                <h3 className="font-['Rajdhani'] text-lg font-bold text-white">Tools & CMS</h3>
-              </div>
-              <ul className="space-y-3 font-['Rajdhani']">
-                {[
-                  { name: "WordPress", level: 75 },
-                ].map((skill) => (
-                  <li key={skill.name} className="text-sm">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-turquoise">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 rounded-full h-1.5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-turquoise to-green-500 h-1.5 rounded-full"
-                      ></motion.div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+                  {/* Skill Name */}
+                  <span className="font-['Rajdhani'] text-sm text-gray-400 group-hover:text-white transition-colors">
+                    {skill.name}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
     </section>
-  );
+  )
 }
