@@ -6,23 +6,18 @@ import { Github } from "lucide-react"
 
 export default function WorkSection() {
   const projects = [
-    {
-      title: "Bar Website with Reservation",
-      description: "Next.js / React / Responsive Design / Reservation Form",
-      github: "https://baraki.vercel.app/",
-      image: "/images/noir-bar.png",
-    },
-    {
-      title: "eCommerce",
-      description: "Next.js / React / eCommerce platform with shopping cart",
-      github: "https://e-commerce-roan-seven-60.vercel.app/",
-      image: "/images/e-commerce.png",
-    },
+    
     {
       title: "Personal Finance Tracker",
       description: "Next.js / React / Responsive Design / User Authentication",
       github: "https://personal-finance-tracker-32b1.vercel.app/",
       image: "/images/pft.png",
+    },
+    {
+      title: "Airport Shuttle Service",
+      description: "Next.js / React / Responsive Design",
+      github: "https://transfer-airport.vercel.app/",
+      image: "/images/transfer.png",
     },
   ]
 
